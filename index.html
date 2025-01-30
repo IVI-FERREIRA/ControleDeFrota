@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Controle de Frota</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom styles -->
+    <link href="/css/index.css" rel="stylesheet">    
+</head>
+
+<body class="text-center">
+<main class="form-signin">
+    <form id="loginForm">    
+        <img class="mb-4" src="/assets/logo.svg" alt="" width="90" height="70">
+        <h1 class="h3 mb-3 fw-normal">Acessar Sistema</h1>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="username">
+            <label for="username">Usuário</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="password">
+            <label for="password">Senha</label>
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Lembrar Senha
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="button" onclick="validateLogin()">Entrar</button>
+    </form>
+</main>
+
+<!-- Toast de erro -->
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="loginToast" class="toast text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Erro no Login</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body" id="toastMessage"></div>
+    </div>
+</div>
+
+<footer>
+    <p class="mt-5 mb-3 text-muted">Criado Por AmapáNet | &copy; 2025 Todos os Direitos Reservados.</p>
+</footer>
+
+
+
+<!--Script TOAST para alerta de senha e usuario incorreto-->
+<script>
+    function validateLogin() {
+        const userInput = document.getElementById("username").value;
+        const passInput = document.getElementById("password").value;
+
+        // USUÁRIO E SENHA APENAS PARA TESTE 
+        const correctUser = "admin";
+        const correctPass = "1234";
+
+        let errorMessage = "";
+        if (userInput !== correctUser && passInput !== correctPass) {
+            errorMessage = "Usuário e senha incorretos!";
+        } else if (userInput !== correctUser) {
+            errorMessage = "Usuário inválido!";
+        } else if (passInput !== correctPass) {
+            errorMessage = "Senha incorreta!";
+        }
+
+        if (errorMessage) {
+            document.getElementById("toastMessage").innerText = errorMessage;
+            let toast = new bootstrap.Toast(document.getElementById("loginToast"));
+            toast.show();
+        } else {
+            window.location.href = "pageMain.html"; // Redireciona ao sucesso
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+    
+  
+  /* A sidebar fixa, apenas em telas grandes */
+  #sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    z-index: 100;
+  } 
+ 
+  
+  /* Quando a tela for menor que 768px, a sidebar se esconde */
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      display: none;
+    }
+  
+    main {
+      margin-left: 250px;
+    }
+
+    .footer2{
+        padding-left: 260px;
+        text-align: center;
+      }
+      
+  }
+  

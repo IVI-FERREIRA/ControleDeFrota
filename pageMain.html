@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <title>Controle de Frota</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/pageMain.css" rel="stylesheet">
+    <link href="/css/sidebar.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <div class="d-flex">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="bg-light d-none d-md-block">
+                <ul class="list-unstyled">
+                    <div class="text-center" id="ufpb-logo">
+                        <img width="111px" height="160" src="/assets/logo.svg"  alt="logo FrotCar"/>
+                    </div>
+
+                    <ul class="list-group">
+                        <li class="list-group-item active">
+                            <a href="#content1" class="nav-link">Informações De Veículo</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#content2" class="nav-link">Cadastro De Usuários</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#content3" class="nav-link">Inspeção De Veículo</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#content4" class="nav-link">Relatórios</a>
+                        </li>
+                    </ul>                    
+
+
+
+                </ul>
+
+                      <!-- Script para a sidebar iniciar na primeira opção e criar as interaçoes com as demais opçoes dependendo do clique do usuario-->
+                <script>
+                    // Ao carregar a página, coloque o primeiro item como ativo
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const items = document.querySelectorAll('.list-group-item');
+                        
+                        // Adicionar evento de clique para alternar o item ativo
+                        items.forEach(item => {
+                            item.addEventListener('click', function() {
+                                items.forEach(i => i.classList.remove('active'));  // Remove a classe active de todos os itens
+                                this.classList.add('active');  // Adiciona a classe active no item clicado
+                            });
+                        });
+                    });
+                </script>
+
+            </div>
+
+            <!-- Main content -->
+            <main class="flex-fill p-3" id="main-content">
+                <!-- O conteúdo do main mudará conforme as opções do menu -->
+                <div id="content1">
+                    TELA DE INFORMAÇÕES DOS VEICULOS
+                </div>
+
+                <div id="content2" style="display:none;">
+                    TELA DE CADASTRO DE USUARIO
+                </div>
+                <div id="content3" style="display:none;">
+                    TELA DE INSPEÇÃO
+                </div>
+                <div id="content4" style="display:none;">
+                    TELA DE RELATÓRIOS
+                </div>
+                <!-- Adicione mais conteúdo conforme necessário -->
+            </main>
+        </div>
+
+
+
+    </div>
+    <footer class="footer2">
+        <p class="mt-5 mb-3 text-muted">Criado Por AmapáNet | &copy; 2025 Todos os Direitos Reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Código para alterar o conteúdo ao clicar nos itens do menu
+        $(document).ready(function () {
+            $('a.nav-link').click(function (event) {
+                event.preventDefault();
+                var target = $(this).attr('href');
+
+                // Esconde todos os conteúdos
+                $('#main-content > div').hide();
+
+                // Exibe o conteúdo correspondente
+                $(target).show();
+            });
+        });
+    </script>
+</body>
+
+</html>
